@@ -1,8 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
-
+import Countries from "./components/Countries";
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Countries />
+    </div>
+  );
 }
 
 export default App;
