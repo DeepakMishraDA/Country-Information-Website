@@ -4,6 +4,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const useStyles = makeStyles({
   tableStyle: {
@@ -20,6 +22,17 @@ const useStyles = makeStyles({
 
 function Countries() {
   const classes = useStyles();
+  const [countries, setCountry] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("https://restcountries.com/v3.1/all");
+      const newData = await response.json();
+      console.log(newData);
+    };
+    fetchData();
+  });
+
   return (
     <div>
       <TableContainer className={classes.tableStyle}>
