@@ -23,11 +23,15 @@ const useStyles = makeStyles({
 function Countries() {
   const classes = useStyles();
   const [countries, setCountry] = useState([]);
-
+  console.log(countries);
+  // useEffect(() => {
+  //   console.log("I am useEffect");
+  // }, [countries]);
   useEffect(() => {
     const fetchData = async () => {
       const responses = await axios.get("https://restcountries.com/v3.1/all");
-      console.log(responses.data[0].currencies);
+      console.log(responses.data[0].population);
+      //const data = JSON.parse(responses);
       setCountry(responses.data);
     };
     fetchData();
@@ -35,17 +39,23 @@ function Countries() {
 
   return (
     <div>
-      <TableContainer className={classes.tableStyle}>
-        <TableHead>
-          <TableRow>
-            {countries.map((item, index) => {
-              return <TableCell>{item}</TableCell>;
-            })}
-          </TableRow>
-        </TableHead>
-      </TableContainer>
+      {countries.map((item) => {
+        return (
+          <div>
+            <div>
+              <TableRow>
+                <TableCell>{item.population}</TableCell>
+              </TableRow>
+            </div>
+            <div>
+              <TableRow>
+                <TableCell>{item.name.common}</TableCell>
+              </TableRow>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
-
 export default Countries;
