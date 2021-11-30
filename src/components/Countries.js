@@ -49,18 +49,22 @@ function Countries() {
                 <TableRow>
                   <TableCell>Population</TableCell>
                   <TableCell align="left">Countries</TableCell>
+                  <TableCell align="left">Currencies</TableCell>
+                  <TableCell align="left">Continents</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {countries.map((row) => (
                   <TableRow
                     key={row}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    sx={{ "&:last-child td, &:last-child th": { border: 10 } }}
                   >
                     <TableCell component="th" scope="row">
                       {row.population}
                     </TableCell>
                     <TableCell align="left">{row.name.common}</TableCell>
+                    <TableCell align="left">{row.currencies}</TableCell>
+                    <TableCell align="left">{row.region}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
