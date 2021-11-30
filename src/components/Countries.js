@@ -7,7 +7,8 @@ import TableCell from "@material-ui/core/TableCell";
 //import { makeStyles } from "@material-ui/core";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import Paper from "@material-ui/core/Paper";
+import TableBody from "@material-ui/core/TableBody";
 // const useStyles = makeStyles({
 //   tableStyle: {
 //     width: "960px",
@@ -42,14 +43,27 @@ function Countries() {
     <div>
       {countries.map((item) => {
         return (
-          <TableContainer>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 550 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>{item.population}</TableCell>
-                  <TableCell align={"left"}>{item.name.common}</TableCell>
+                  <TableCell>Population</TableCell>
+                  <TableCell align="left">Countries</TableCell>
                 </TableRow>
               </TableHead>
+              <TableBody>
+                {countries.map((row) => (
+                  <TableRow
+                    key={row}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {row.population}
+                    </TableCell>
+                    <TableCell align="left">{row.name.common}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
             </Table>
           </TableContainer>
         );
