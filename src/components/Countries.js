@@ -26,22 +26,21 @@ function Countries() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("https://restcountries.com/v3.1/all");
-      const newData = await response.json();
-      console.log(newData);
+      const responses = await axios.get("https://restcountries.com/v3.1/all");
+      console.log(responses.data[0].currencies);
+      setCountry(responses.data);
     };
     fetchData();
-  });
+  }, []);
 
   return (
     <div>
       <TableContainer className={classes.tableStyle}>
         <TableHead>
           <TableRow>
-            <TableCell>CountryName</TableCell>
-            <TableCell>Population</TableCell>
-            <TableCell>Language</TableCell>
-            <TableCell>Capital</TableCell>
+            {countries.map((item, index) => {
+              return <TableCell>{item}</TableCell>;
+            })}
           </TableRow>
         </TableHead>
       </TableContainer>
