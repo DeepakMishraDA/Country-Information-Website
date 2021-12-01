@@ -35,7 +35,7 @@ const useStyles = makeStyles({
     paddingTop: "0px",
   },
   tablerow1Style: {
-    border: "transparent blue 2px",
+    border: "outset pink 2px",
     color: "red",
     width: "10%",
     height: "22px",
