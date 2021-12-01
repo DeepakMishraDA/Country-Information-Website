@@ -34,6 +34,14 @@ const useStyles = makeStyles({
     marginTop: "5px",
     paddingTop: "0px",
   },
+  tablerow1Style: {
+    border: "transparent blue 2px",
+    color: "red",
+    width: "10%",
+    height: "22px",
+    marginTop: "5px",
+    paddingTop: "0px",
+  },
 });
 
 function Countries() {
@@ -59,13 +67,15 @@ function Countries() {
         <div>
           <Table>
             <TableRow className={classes.tableStyle}>
-              <TableCell className={classes.tablerowStyle}>Flags</TableCell>
-              <TableCell className={classes.tablerowStyle}>Countries</TableCell>
-              <TableCell className={classes.tablerowStyle}>
+              <TableCell className={classes.tablerow1Style}>Flags</TableCell>
+              <TableCell className={classes.tablerow1Style}>
+                Countries
+              </TableCell>
+              <TableCell className={classes.tablerow1Style}>
                 Population
               </TableCell>
-              <TableCell className={classes.tablerowStyle}>Capital</TableCell>
-              <TableCell className={classes.tablerowStyle}>
+              <TableCell className={classes.tablerow1Style}>Capital</TableCell>
+              <TableCell className={classes.tablerow1Style}>
                 Continents
               </TableCell>
             </TableRow>
