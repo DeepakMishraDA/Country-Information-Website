@@ -4,7 +4,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
-//import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { useState, useEffect } from "react";
 import axios from "axios";
 //import Paper from "@material-ui/core/Paper";
@@ -21,9 +21,23 @@ import axios from "axios";
 //     //paddingLeft: "10px",
 //   },
 // });
+const useStyles = makeStyles({
+  tableStyle: {
+    display: "flex",
+    justifyContent: "space-evenly",
+    margin: "0px",
+  },
+  tablerowStyle: {
+    border: "transparent blue 2px",
+    width: "10%",
+    height: "22px",
+    marginTop: "5px",
+    paddingTop: "0px",
+  },
+});
 
 function Countries() {
-  //const classes = useStyles();
+  const classes = useStyles();
   const [countries, setCountry] = useState([]);
   //console.log(countries);
   // useEffect(() => {
@@ -44,12 +58,16 @@ function Countries() {
       <TableContainer>
         <div>
           <Table>
-            <TableRow>
-              <TableCell>Flags</TableCell>
-              <TableCell>Countries</TableCell>
-              <TableCell>Population</TableCell>
-              <TableCell>Capital</TableCell>
-              <TableCell>Continents</TableCell>
+            <TableRow className={classes.tableStyle}>
+              <TableCell className={classes.tablerowStyle}>Flags</TableCell>
+              <TableCell className={classes.tablerowStyle}>Countries</TableCell>
+              <TableCell className={classes.tablerowStyle}>
+                Population
+              </TableCell>
+              <TableCell className={classes.tablerowStyle}>Capital</TableCell>
+              <TableCell className={classes.tablerowStyle}>
+                Continents
+              </TableCell>
             </TableRow>
           </Table>
         </div>
@@ -57,12 +75,22 @@ function Countries() {
           <Table>
             {countries.map((data) => {
               return (
-                <TableRow>
-                  <TableCell>{data.flag}</TableCell>
-                  <TableCell>{data.name.common}</TableCell>
-                  <TableCell>{data.population}</TableCell>
-                  <TableCell>{data.capital}</TableCell>
-                  <TableCell>{data.continents[0]}</TableCell>
+                <TableRow className={classes.tableStyle}>
+                  <TableCell className={classes.tablerowStyle}>
+                    {data.flag}
+                  </TableCell>
+                  <TableCell className={classes.tablerowStyle}>
+                    {data.name.common}
+                  </TableCell>
+                  <TableCell className={classes.tablerowStyle}>
+                    {data.population}
+                  </TableCell>
+                  <TableCell className={classes.tablerowStyle}>
+                    {data.capital}
+                  </TableCell>
+                  <TableCell className={classes.tablerowStyle}>
+                    {data.continents[0]}
+                  </TableCell>
                 </TableRow>
               );
             })}
