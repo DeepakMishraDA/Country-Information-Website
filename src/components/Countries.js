@@ -1,7 +1,9 @@
 import React from "react";
 import TableContainer from "@material-ui/core/TableContainer";
-//import TableHead from "@material-ui/core/TableHead";
+import Button from "@material-ui/core/Button";
 import TableRow from "@material-ui/core/TableRow";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core";
@@ -22,25 +24,50 @@ import axios from "axios";
 //   },
 // });
 const useStyles = makeStyles({
+  tableContainerStyle: {
+    marginTop: "6%",
+  },
   tableStyle: {
     display: "flex",
     justifyContent: "space-evenly",
     margin: "0px",
   },
   tablerowStyle: {
-    border: "transparent blue 2px",
-    width: "10%",
-    height: "22px",
+    fontSize: "20px",
+    width: "13%",
+    height: "45px",
     marginTop: "5px",
     paddingTop: "0px",
+    fontFamily: "Times New Roman, Times, serif",
+    border: "outset pink 2px",
+    borderRightStyle: "solid",
+    backgroundColor: "skyblue",
   },
   tablerow1Style: {
-    border: "outset pink 2px",
-    color: "red",
-    width: "10%",
-    height: "22px",
+    fontSize: "25px",
+    fontStyle: "oblique",
+    border: "inset lightblue .1px",
+    textAlign: "center",
+    color: "blue",
+    width: "13%",
+    height: "45px",
+    marginTop: "5px",
+    padding: "20px",
+    paddingTop: "0px",
+    backgroundColor: "azure",
+  },
+  flagstyle: {
+    width: "13%",
+    display: "block",
+    height: "45px",
     marginTop: "5px",
     paddingTop: "0px",
+    border: "outset pink 2px",
+    borderRightStyle: "solid",
+    backgroundColor: "skyblue",
+  },
+  buttonstyle: {
+    border: "inset 0.2px",
   },
 });
 
@@ -63,20 +90,30 @@ function Countries() {
 
   return (
     <div>
-      <TableContainer>
+      <AppBar variant="outlined">
+        <Toolbar>
+          <Button
+            className={classes.buttonstyle}
+            variant="contained"
+            color="primary"
+            size="large"
+          >
+            Home
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <TableContainer className={classes.tableContainerStyle}>
         <div>
           <Table>
             <TableRow className={classes.tableStyle}>
-              <TableCell className={classes.tablerow1Style}>Flags</TableCell>
-              <TableCell className={classes.tablerow1Style}>
-                Countries
-              </TableCell>
+              <TableCell className={classes.tablerow1Style}>Flag</TableCell>
+              <TableCell className={classes.tablerow1Style}>Country</TableCell>
               <TableCell className={classes.tablerow1Style}>
                 Population
               </TableCell>
               <TableCell className={classes.tablerow1Style}>Capital</TableCell>
               <TableCell className={classes.tablerow1Style}>
-                Continents
+                Continent
               </TableCell>
             </TableRow>
           </Table>
@@ -86,7 +123,7 @@ function Countries() {
             {countries.map((data) => {
               return (
                 <TableRow className={classes.tableStyle}>
-                  <TableCell className={classes.tablerowStyle}>
+                  <TableCell className={classes.flagstyle}>
                     {data.flag}
                   </TableCell>
                   <TableCell className={classes.tablerowStyle}>
