@@ -68,6 +68,7 @@ const useStyles = makeStyles({
   },
   buttonstyle: {
     border: "inset 0.2px",
+    marginLeft: "16px",
   },
 });
 
