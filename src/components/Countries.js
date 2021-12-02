@@ -7,8 +7,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core";
-import { useState, useEffect } from "react";
-import axios from "axios";
+
+import useCountry from "../customhooks/useCountry";
+
 //import Paper from "@material-ui/core/Paper";
 //import TableBody from "@material-ui/core/TableBody";
 // const useStyles = makeStyles({
@@ -74,21 +75,10 @@ const useStyles = makeStyles({
 
 function Countries() {
   const classes = useStyles();
-  const [countries, setCountry] = useState([]);
-  //console.log(countries);
-  // useEffect(() => {
-  //   console.log("I am useEffect");
-  // }, [countries]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const responses = await axios.get("https://restcountries.com/v3.1/all");
-      console.log(responses.data);
-      //const data = JSON.parse(responses);
-      setCountry(responses.data);
-    };
-    fetchData();
-  }, []);
-
+  const { countries, errr } = useCountry();
+  if (errr) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <div>
       <AppBar variant="outlined">
