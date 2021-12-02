@@ -7,6 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core";
+import { useState, useEffect } from "react";
 
 import useCountry from "../customhooks/useCountry";
 
@@ -76,8 +77,19 @@ const useStyles = makeStyles({
 function Countries() {
   const classes = useStyles();
   const { countries, errr } = useCountry();
+  const [ff, setFf] = useState("Loading...");
+
+  useEffect(() => {
+    const timer = () => {
+      setTimeout(() => {
+        setFf("Something went wrong!!");
+      }, 10000);
+    };
+    timer();
+  }, []);
+
   if (errr) {
-    return <h1>Loading...</h1>;
+    return <h1 style={{ color: "blue" }}>{ff}</h1>;
   }
   return (
     <div>
