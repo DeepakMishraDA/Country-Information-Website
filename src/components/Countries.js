@@ -89,7 +89,7 @@ function Countries() {
   }, []);
 
   if (errr) {
-    return <h1 style={{ color: "blue" }}>{ff}</h1>;
+    return <h1 className="id">{ff}</h1>;
   }
   return (
     <div>
