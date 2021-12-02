@@ -8,6 +8,7 @@ import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import useCountries from "../customhooks/useCountries";
 
@@ -114,7 +115,7 @@ function Countries() {
               <TableCell className={classes.tablerow1Style}>
                 Population
               </TableCell>
-              <TableCell className={classes.tablerow1Style}>Capital</TableCell>
+              <TableCell className={classes.tablerow1Style}>Capital</TableCell>{" "}
               <TableCell className={classes.tablerow1Style}>
                 Continent
               </TableCell>
@@ -129,18 +130,26 @@ function Countries() {
                   <TableCell className={classes.flagstyle}>
                     {data.flag}
                   </TableCell>
-                  <TableCell className={classes.tablerowStyle}>
-                    {data.name.common}
-                  </TableCell>
-                  <TableCell className={classes.tablerowStyle}>
-                    {data.population}
-                  </TableCell>
-                  <TableCell className={classes.tablerowStyle}>
-                    {data.capital}
-                  </TableCell>
-                  <TableCell className={classes.tablerowStyle}>
-                    {data.continents[0]}
-                  </TableCell>
+                  <Link to={data.name.common}>
+                    <TableCell className={classes.tablerowStyle}>
+                      {data.name.common}
+                    </TableCell>
+                  </Link>
+                  <Link to={data.name.common}>
+                    <TableCell className={classes.tablerowStyle}>
+                      {data.population}
+                    </TableCell>
+                  </Link>
+                  <Link to={data.name.common}>
+                    <TableCell className={classes.tablerowStyle}>
+                      {data.capital}
+                    </TableCell>
+                  </Link>
+                  <Link to={data.name.common}>
+                    <TableCell className={classes.tablerowStyle}>
+                      {data.continents[0]}
+                    </TableCell>
+                  </Link>
                 </TableRow>
               );
             })}

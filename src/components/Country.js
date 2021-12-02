@@ -8,6 +8,8 @@ import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import useCountry from "../customhooks/useCountry";
 
@@ -76,7 +78,8 @@ const useStyles = makeStyles({
 
 function Countries() {
   const classes = useStyles();
-  const { countries, errr } = useCountry("");
+  const param = useParams();
+  const { countries, errr } = useCountry(param.countryName);
   const [ff, setFf] = useState("Loading...");
 
   useEffect(() => {
@@ -95,14 +98,16 @@ function Countries() {
     <div>
       <AppBar variant="outlined">
         <Toolbar>
-          <Button
-            className={classes.buttonstyle}
-            variant="contained"
-            color="primary"
-            size="large"
-          >
-            Home
-          </Button>
+          <Link to="/">
+            <Button
+              className={classes.buttonstyle}
+              variant="contained"
+              color="primary"
+              size="large"
+            >
+              Home
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
       <TableContainer className={classes.tableContainerStyle}>
