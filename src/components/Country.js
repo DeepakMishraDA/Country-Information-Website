@@ -9,7 +9,7 @@ import TableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core";
 import { useState, useEffect } from "react";
 
-import useCountries from "../customhooks/useCountries";
+import useCountry from "../customhooks/useCountry";
 
 //import Paper from "@material-ui/core/Paper";
 //import TableBody from "@material-ui/core/TableBody";
@@ -76,7 +76,7 @@ const useStyles = makeStyles({
 
 function Countries() {
   const classes = useStyles();
-  const { countries, errr } = useCountries();
+  const { countries, errr } = useCountry("");
   const [ff, setFf] = useState("Loading...");
 
   useEffect(() => {
