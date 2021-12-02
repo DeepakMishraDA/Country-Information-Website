@@ -8,7 +8,7 @@ function useCountry() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responses = await axios.get("https://restcountries.com/v3.1/al");
+        const responses = await axios.get("https://restcountries.com/v3.1/all");
         //console.log(responses.data);
         //const data = JSON.parse(responses);
         setCountry(responses.data);
