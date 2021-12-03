@@ -14,18 +14,7 @@ import useCountries from "../customhooks/useCountries";
 
 //import Paper from "@material-ui/core/Paper";
 //import TableBody from "@material-ui/core/TableBody";
-// const useStyles = makeStyles({
-//   tableStyle: {
-//     width: "960px",
-//     background: "lightblue",
-//     color: "blue",
-//     border: "solid",
-//     borderRadius: "10%",
-//     margin: "10px",
-//     textAlign: "center",
-//     //paddingLeft: "10px",
-//   },
-// });
+
 const useStyles = makeStyles({
   tableContainerStyle: {
     marginTop: "6%",
