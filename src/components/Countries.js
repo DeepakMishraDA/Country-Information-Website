@@ -38,7 +38,7 @@ const useStyles = makeStyles({
   tablerowStyle: {
     fontSize: "20px",
     width: "13%",
-    height: "45px",
+    height: "47px",
     marginTop: "5px",
     paddingTop: "0px",
     fontFamily: "Times New Roman, Times, serif",
@@ -72,6 +72,23 @@ const useStyles = makeStyles({
   buttonstyle: {
     border: "inset 0.2px",
     marginLeft: "16px",
+  },
+  onecellstyle: {
+    width: "15%",
+    height: "52px",
+    marginTop: "7px",
+    paddingTop: "0px",
+    fontFamily: "Times New Roman, Times, serif",
+    border: "outset pink 2px",
+    borderStyle: "solid",
+    backgroundColor: "skyblue",
+    color: "black",
+    textAlign: "right",
+    paddingBottom: "10px",
+    textDecoration: "none",
+  },
+  cellstyle: {
+    fontSize: "120%",
   },
 });
 
@@ -130,26 +147,20 @@ function Countries() {
                   <TableCell className={classes.flagstyle}>
                     {data.flag}
                   </TableCell>
-                  <Link to={data.name.common}>
-                    <TableCell className={classes.tablerowStyle}>
+                  <Link className={classes.onecellstyle} to={data.name.common}>
+                    <TableCell className={classes.cellstyle}>
                       {data.name.common}
                     </TableCell>
                   </Link>
-                  <Link to={data.name.common}>
-                    <TableCell className={classes.tablerowStyle}>
-                      {data.population}
-                    </TableCell>
-                  </Link>
-                  <Link to={data.name.common}>
-                    <TableCell className={classes.tablerowStyle}>
-                      {data.capital}
-                    </TableCell>
-                  </Link>
-                  <Link to={data.name.common}>
-                    <TableCell className={classes.tablerowStyle}>
-                      {data.continents[0]}
-                    </TableCell>
-                  </Link>
+                  <TableCell className={classes.tablerowStyle}>
+                    {data.population}
+                  </TableCell>
+                  <TableCell className={classes.tablerowStyle}>
+                    {data.capital}
+                  </TableCell>
+                  <TableCell className={classes.tablerowStyle}>
+                    {data.continents[0]}
+                  </TableCell>
                 </TableRow>
               );
             })}
