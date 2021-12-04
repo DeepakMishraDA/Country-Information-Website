@@ -1,0 +1,27 @@
+const defaultState = {
+  count: 0,
+};
+
+const countReducer = (state = defaultState, action) => {
+  switch (action.type) {
+    case "Increase":
+      return {
+        ...state,
+        count: state.count + 1,
+      };
+      break;
+    case "Decrease":
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+      break;
+
+    default:
+      return {
+        ...state,
+      };
+  }
+};
+
+export default countReducer;
