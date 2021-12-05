@@ -12,14 +12,16 @@ function App() {
   const selector = useSelector((state) => {
     return state.count;
   });
+  console.log(selector);
   return (
     <div className="App">
-      <h1>Count:{selector}</h1>
-
       <Routes>
         <Route path="/" element={<Countries />} />
         <Route exact path=":countryName" element={<Country />} />
-        <Route path="cart" element={<Cart />} />
+        <Route
+          path="cart"
+          element={<Cart selector={selector} dispatch={dispatch} />}
+        />
       </Routes>
     </div>
   );
