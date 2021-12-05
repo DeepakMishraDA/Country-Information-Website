@@ -1,3 +1,5 @@
+import action from "./action";
+
 const defaultState = {
   count: 0,
 };

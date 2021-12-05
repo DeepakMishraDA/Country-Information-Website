@@ -5,6 +5,8 @@ function increase() {
 }
 function decrease() {
   return {
-    rtype: "Decrease",
+    type: "Decrease",
   };
 }
+
+export default action;
