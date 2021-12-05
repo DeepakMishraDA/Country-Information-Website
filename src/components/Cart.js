@@ -1,7 +1,12 @@
 import React from "react";
 import { increase, decrease } from "../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
-function Cart({ selector, dispatch }) {
+function Cart() {
+  const dispatch = useDispatch();
+  const selector = useSelector((state) => {
+    return state.count;
+  });
   const increment = () => {
     dispatch(increase());
   };
