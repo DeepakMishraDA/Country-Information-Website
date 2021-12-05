@@ -1,12 +1,10 @@
-function increase() {
+export function increase() {
   return {
     type: "Increase",
   };
 }
-function decrease() {
+export function decrease() {
   return {
     type: "Decrease",
   };
 }
-
-export default action;
