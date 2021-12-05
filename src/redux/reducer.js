@@ -9,13 +9,12 @@ const countReducer = (state = defaultState, action) => {
         ...state,
         count: state.count + 1,
       };
-      break;
+
     case "Decrease":
       return {
         ...state,
         count: state.count - 1,
       };
-      break;
 
     default:
       return {
