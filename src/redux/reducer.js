@@ -1,14 +1,12 @@
 const defaultState = {
-  count: 0,
+  count: [],
 };
 
 const countReducer = (state = defaultState, action) => {
   switch (action.type) {
     case "Increase":
-      return {
-        ...state,
-        count: state.count + 1,
-      };
+      console.log(action.payload);
+      break;
 
     case "Decrease":
       return {

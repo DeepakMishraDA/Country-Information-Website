@@ -1,10 +1,12 @@
-export function increase() {
+export function addCountry(country) {
   return {
-    type: "Increase",
+    type: "INSERT_COUNTRY",
+    payload: country,
   };
 }
-export function decrease() {
+export function remove(countryName) {
   return {
-    type: "Decrease",
+    type: "REMOVE_COUNTRY",
+    payload: countryName,
   };
 }
