@@ -17,6 +17,7 @@ const countReducer = (state = defaultState, action) => {
         return false;
       });
       if (existCountry) {
+        return state;
       }
       return {};
 
