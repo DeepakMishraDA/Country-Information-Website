@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { addCountry, remove, getData } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,6 +18,9 @@ function Cart() {
   const dataGet = () => {
     dispatch(getData());
   };
+  useEffect(() => {
+    console.log("SEE", dispatch(getData()));
+  }, [dispatch]);
   return (
     <div>
       {/* <h1>Count:{selector}</h1> */}

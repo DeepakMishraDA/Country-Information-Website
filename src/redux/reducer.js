@@ -36,6 +36,12 @@ const countReducer = (state = defaultState, action) => {
       return {
         ...countryRemove,
       };
+    case "Deliver_Countries":
+      const realPayload = action.payload;
+      return {
+        ...state,
+        cart: realPayload,
+      };
 
     default:
       break;

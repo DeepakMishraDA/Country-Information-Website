@@ -15,6 +15,13 @@ export function remove(countryName) {
 export const getData = () => {
   return async (dispatch, getState) => {
     const responses = await axios.get("https://restcountries.com/v3.1/all");
-    console.log(responses);
+    console.log("And This", responses);
+    dispatch(deliverData(responses));
   };
 };
+export function deliverData(data) {
+  return {
+    type: "Deliver_Countries",
+    payload: data,
+  };
+}
