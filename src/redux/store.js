@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore } from "redux"; //applyMiddleware
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import countReducer from "./reducer";

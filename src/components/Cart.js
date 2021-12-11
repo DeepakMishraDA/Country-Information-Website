@@ -1,23 +1,25 @@
 import React from "react";
-import { increase, decrease } from "../redux/action";
+import { addCountry, remove } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 
 function Cart() {
   const dispatch = useDispatch();
-  const selector = useSelector((state) => {
-    return state.count;
-  });
-  const increment = () => {
-    dispatch(increase());
+  // const selector = useSelector((state) => {
+  //   return state.cart;
+  // });
+  const fakeCountry = { name: "Germany", population: "8 crs" };
+
+  const addcountry = () => {
+    dispatch(addCountry(fakeCountry));
   };
-  const decrement = () => {
-    dispatch(decrease());
+  const removeit = () => {
+    dispatch(remove());
   };
   return (
     <div>
-      <h1>Count:{selector}</h1>
-      <button onClick={increment}>Increase</button>
-      <button onClick={decrement}>Decrease</button>
+      {/* <h1>Count:{selector}</h1> */}
+      <button onClick={addcountry}>Increase</button>
+      <button onClick={removeit}>Decrease</button>
     </div>
   );
 }

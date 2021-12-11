@@ -19,6 +19,7 @@ const countReducer = (state = defaultState, action) => {
       if (existCountry) {
         return state;
       }
+      //console.log(state);
       return {
         ...state,
         cart: [...state.cart, incomingCountry],
@@ -40,5 +41,7 @@ const countReducer = (state = defaultState, action) => {
       break;
   }
 };
+
+//export get
 
 export default countReducer;

@@ -5,7 +5,9 @@ import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import reduxstore from "./redux/store";
+import storeFactory from "./redux/store";
+
+const reduxstore = storeFactory();
 
 ReactDOM.render(
   <React.StrictMode>
