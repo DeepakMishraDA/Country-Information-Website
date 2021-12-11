@@ -1,6 +1,11 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+
 import countReducer from "./reducer";
 
-const store = createStore(countReducer);
+const storeFactory = () => {
+  const reduxStore = createStore(countReducer, composeWithDevTools());
+  return reduxStore;
+};
 
-export default store;
+export default storeFactory;
