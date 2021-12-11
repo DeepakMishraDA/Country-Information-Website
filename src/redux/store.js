@@ -1,10 +1,15 @@
-import { createStore } from "redux"; //applyMiddleware
+import { createStore, applyMiddleware, compose } from "redux"; //applyMiddleware
+import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import countReducer from "./reducer";
 
 const storeFactory = () => {
-  const reduxStore = createStore(countReducer, composeWithDevTools());
+  const middleware = [thunk]; //if u have saga use saga here inside array
+  const reduxStore = createStore(
+    countReducer,
+    composeWithDevTools(applyMiddleware(...middleware))
+  );
   return reduxStore;
 };
 
