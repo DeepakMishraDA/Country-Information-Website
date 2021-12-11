@@ -25,9 +25,15 @@ const countReducer = (state = defaultState, action) => {
       };
 
     case "REMOVE_COUNTRY":
+      const countryRemove = state.cart.filter((country) => {
+        if (action.payload === country.name) {
+          return false;
+        }
+        return true;
+      });
+
       return {
-        ...state,
-        count: state.count - 1,
+        ...countryRemove,
       };
 
     default:
