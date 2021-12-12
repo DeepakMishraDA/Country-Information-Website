@@ -18,7 +18,7 @@ import useStyles from "./useStyle";
 function Countries() {
   const classes = useStyles();
   const { countries, errr } = useCountries();
-  const [ff, setFf] = useState("Loading...");
+  const [forErr, setFf] = useState("Loading...");
 
   useEffect(() => {
     const timer = () => {
@@ -30,7 +30,7 @@ function Countries() {
   }, []);
 
   if (errr) {
-    return <h1 className="id">{ff}</h1>;
+    return <h1 className="id">{forErr}</h1>;
   }
   return (
     <div>
