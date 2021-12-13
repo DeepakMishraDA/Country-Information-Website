@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { addCountry, remove, getData } from "../redux/action";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux"; // useSelector
 
 function Cart() {
   const dispatch = useDispatch();

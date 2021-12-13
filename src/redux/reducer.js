@@ -1,5 +1,6 @@
 const defaultState = {
   cart: [],
+  countries: [],
 };
 
 const countReducer = (state = defaultState, action) => {
@@ -40,7 +41,7 @@ const countReducer = (state = defaultState, action) => {
       const realPayload = action.payload;
       return {
         ...state,
-        cart: realPayload,
+        countries: realPayload,
       };
 
     default:
