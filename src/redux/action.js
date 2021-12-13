@@ -25,3 +25,12 @@ export function deliverData(data) {
     payload: data,
   };
 }
+
+export const getAcountry = (name) => {
+  return async (dispatch, getState) => {
+    const responses = await axios.get(
+      `https://restcountries.com/v3.1/name/${name}`
+    );
+    console.log("And This", responses);
+  };
+};

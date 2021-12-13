@@ -49,6 +49,4 @@ const countReducer = (state = defaultState, action) => {
   }
 };
 
-//export get
-
 export default countReducer;
