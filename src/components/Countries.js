@@ -8,8 +8,10 @@ import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+//import { useDispatch } from "react-redux";
 
 import useCountries from "../customhooks/useCountries";
+// import { getAllcountries } from "../redux/action";
 import useStyles from "./useStyle";
 
 //import Paper from "@material-ui/core/Paper";
@@ -17,6 +19,8 @@ import useStyles from "./useStyle";
 
 function Countries() {
   const classes = useStyles();
+  //const dispatch = useDispatch();
+  //const countries = dispatch(getAllcountries());
   const { countries, errr } = useCountries();
   const [forErr, setFf] = useState("Loading...");
 

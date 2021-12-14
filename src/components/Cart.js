@@ -1,32 +1,23 @@
+import { Button } from "@material-ui/core";
 import React, { useEffect } from "react";
-import { addCountry, remove, getData } from "../redux/action";
-import { useDispatch } from "react-redux"; // useSelector
+import { useDispatch } from "react-redux"; //useSelector
+import { getAllcountries, getAcountry } from "../redux/action";
 
 function Cart() {
   const dispatch = useDispatch();
-  // const selector = useSelector((state) => {
-  //   return state.cart;
-  // });
-  const fakeCountry = { name: "Germany", population: "8 crs" };
 
-  const addcountry = () => {
-    dispatch(addCountry(fakeCountry));
-  };
-  const removeit = () => {
-    dispatch(remove());
-  };
-  const dataGet = () => {
-    dispatch(getData());
-  };
   useEffect(() => {
-    console.log("SEE", dispatch(getData()));
+    dispatch(getAllcountries());
+    dispatch(getAcountry("germany"));
   }, [dispatch]);
+
+  const trigger = () => {
+    dispatch(getAllcountries);
+  };
+
   return (
     <div>
-      {/* <h1>Count:{selector}</h1> */}
-      <button onClick={addcountry}>Increase</button>
-      <button onClick={removeit}>Decrease</button>
-      <button onClick={dataGet}>See Data</button>
+      <Button onClick={trigger}>Hello</Button>
     </div>
   );
 }
