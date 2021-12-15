@@ -75,9 +75,10 @@ function Countries() {
                     {data.flag}
                   </TableCell>
                   <Link className={classes.onecellstyle} to={data.name.common}>
-                    <TableCell className={classes.cellstyle}>
+                    {data.name.common}
+                    {/* <TableCell className={classes.cellstyle}>
                       {data.name.common}
-                    </TableCell>
+                    </TableCell> */}
                   </Link>
                   <TableCell className={classes.tablerowStyle}>
                     {data.population}
