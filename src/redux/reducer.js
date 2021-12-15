@@ -24,7 +24,7 @@ const countReducer = (state = defaultState, action) => {
       //console.log(state);
       return {
         ...state,
-        cart: [...state.cart, incomingCountry],
+        cart: [...state.cart, action.payload.data[0]],
       };
 
     case "REMOVE_COUNTRY":

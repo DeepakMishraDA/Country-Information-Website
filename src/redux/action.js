@@ -32,11 +32,15 @@ export function deliverData(data) {
 }
 export const getAcountry = (name) => {
   return async (dispatch, getState) => {
-    const response = await axios.get(
-      `https://restcountries.com/v3.1/name/${name}`
-    );
-    console.log("This", response);
-    dispatch(addCountry(response.data));
+    try {
+      const response = await axios.get(
+        `https://restcountries.com/v3.1/name/${name}`
+      );
+      console.log("This", response);
+      dispatch(addCountry(response));
+    } catch (error) {
+      dispatch(fetcherror(error));
+    }
   };
 };
 

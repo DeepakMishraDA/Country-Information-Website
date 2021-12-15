@@ -1,23 +1,24 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCountry } from "../redux/action";
+import { addCountry, getAcountry } from "../redux/action";
 
 function Cart() {
   const dispatch = useDispatch();
   const count = useSelector((state) => {
     return state.cart;
   });
-  console.log("State:", count);
+  console.log("hey:", count);
 
   useEffect(() => {
-    dispatch(addCountry("germany"));
+    dispatch(getAcountry("germany"));
   }, [dispatch]);
 
   return (
     <div>
       {count.map((data) => {
-        return <h1>{data}</h1>;
+        return <h1>{data.name.common}</h1>;
       })}
+      <button onclick={() => getAcountry("finland")}></button>
     </div>
   );
 }
