@@ -1,7 +1,7 @@
 const defaultState = {
   cart: [],
   countries: [],
-  err: null,
+  err: true,
 };
 
 const countReducer = (state = defaultState, action) => {
@@ -50,7 +50,7 @@ const countReducer = (state = defaultState, action) => {
       const errpayload = action.payload;
       return {
         ...state,
-        countries: errpayload,
+        err: errpayload,
       };
 
     default:

@@ -11,7 +11,7 @@ function useCountries() {
   const errr = useSelector((state) => {
     return state.err;
   });
-  console.log("State:", countries);
+  console.log("State:", errr);
 
   useEffect(() => {
     dispatch(getAllcountries());
