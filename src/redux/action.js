@@ -36,7 +36,7 @@ export const getAcountry = (name) => {
       `https://restcountries.com/v3.1/name/${name}`
     );
     console.log("This", response);
-    dispatch(addCountry(response));
+    dispatch(addCountry(response.data));
   };
 };
 

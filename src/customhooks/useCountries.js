@@ -1,25 +1,21 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-// import { useDispatch } from "react-redux"; //useSelector
-// import { getAllcountries, getAcountry } from "../redux/action";
+import { useEffect } from "react";
+// import axios from "axios";
+import { useDispatch, useSelector } from "react-redux"; //useSelector
+import { getAllcountries } from "../redux/action";
 
 function useCountries() {
-  const [countries, setCountry] = useState([]);
-  const [errr, setErr] = useState();
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => {
+    return state.countries;
+  });
+  const errr = useSelector((state) => {
+    return state.err;
+  });
+  console.log("State:", countries);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const responses = await axios.get("https://restcountries.com/v3.1/all");
-        //console.log(responses.data);
-        //const data = JSON.parse(responses);
-        setCountry(responses.data);
-      } catch (error) {
-        setErr(error);
-      }
-    };
-    fetchData();
-  }, []);
+    dispatch(getAllcountries());
+  }, [dispatch]);
   //console.log(countries);
   return { countries, errr };
 }
