@@ -1,23 +1,23 @@
-import { Button } from "@material-ui/core";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux"; //useSelector
-import { getAllcountries, getAcountry } from "../redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllcountries } from "../redux/action";
 
 function Cart() {
   const dispatch = useDispatch();
+  const count = useSelector((state) => {
+    return state.countries;
+  });
+  console.log("State:", count);
 
   useEffect(() => {
     dispatch(getAllcountries());
-    dispatch(getAcountry("germany"));
   }, [dispatch]);
-
-  const trigger = () => {
-    dispatch(getAllcountries);
-  };
 
   return (
     <div>
-      <Button onClick={trigger}>Hello</Button>
+      {count.map((data) => {
+        return <h1>{data.name.common}</h1>;
+      })}
     </div>
   );
 }

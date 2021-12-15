@@ -54,7 +54,7 @@ const countReducer = (state = defaultState, action) => {
       };
 
     default:
-      break;
+      return state;
   }
 };
 

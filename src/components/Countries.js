@@ -21,7 +21,7 @@ function Countries() {
   const classes = useStyles();
   //const dispatch = useDispatch();
   //const countries = dispatch(getAllcountries());
-  const { countries, errr } = useCountries();
+  const { countries, fetcherr } = useCountries();
   const [forErr, setFf] = useState("Loading...");
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function Countries() {
     timer();
   }, []);
 
-  if (errr) {
+  if (fetcherr) {
     return <h1 className="id">{forErr}</h1>;
   }
   return (
