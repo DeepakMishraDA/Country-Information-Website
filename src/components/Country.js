@@ -21,8 +21,8 @@ function Countries() {
   const param = useParams();
   const { countries, errr } = useCountry(param.countryName);
   const [ff, setFf] = useState("Loading...");
-  const history = useNavigate();
-  const backHome = () => history("/");
+  const navigate = useNavigate();
+  const backHome = () => navigate("/");
 
   useEffect(() => {
     const timer = () => {

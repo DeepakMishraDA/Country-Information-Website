@@ -1,23 +1,15 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-// import TableContainer from "@material-ui/core/TableContainer";
-// import TableRow from "@material-ui/core/TableRow";
-// import AppBar from "@material-ui/core/AppBar";
-// import Toolbar from "@material-ui/core/Toolbar";
-// import Table from "@material-ui/core/Table";
-// import TableCell from "@material-ui/core/TableCell";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-//import { useDispatch } from "react-redux";
 
 import useCountries from "../customhooks/useCountries";
 import useStyles from "./useStylecountries";
-// import { getAllcountries } from "../redux/action";
-//import Paper from "@material-ui/core/Paper";
-//import TableBody from "@material-ui/core/TableBody";
+import newStyle from "./newStyle";
 
 function Countries() {
   const classes = useStyles();
+  const clas = newStyle();
   const { countries, errr } = useCountries();
   const [forErr, setFf] = useState("Loading...");
 
@@ -52,7 +44,7 @@ function Countries() {
         </Button>
       </div>
       <body>
-        <table>
+        <table className={clas.styledtable}>
           <tr>
             <th>Flag</th>
             <th>Country</th>
