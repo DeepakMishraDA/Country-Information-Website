@@ -7,7 +7,7 @@ import useCountries from "../customhooks/useCountries";
 import useStyles from "./useStylecountries";
 import newStyle from "./newStyle";
 
-function Card() {
+function Countries() {
   const classes = useStyles();
   const clas = newStyle();
   const { countries, errr } = useCountries();
@@ -93,4 +93,4 @@ function Card() {
     </div>
   );
 }
-export default Card;
+export default Countries;
