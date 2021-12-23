@@ -1,25 +1,19 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-// import TableContainer from "@material-ui/core/TableContainer";
-// import TableRow from "@material-ui/core/TableRow";
-// import AppBar from "@material-ui/core/AppBar";
-// import Toolbar from "@material-ui/core/Toolbar";
-// import Table from "@material-ui/core/Table";
-// import TableCell from "@material-ui/core/TableCell";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-//import { useDispatch } from "react-redux";
 
 import useCountries from "../customhooks/useCountries";
 import useStyles from "./useStylecountries";
-// import { getAllcountries } from "../redux/action";
-//import Paper from "@material-ui/core/Paper";
-//import TableBody from "@material-ui/core/TableBody";
+import newStyle from "./newStyle";
 
-function Countries() {
+function Card() {
   const classes = useStyles();
+  const clas = newStyle();
   const { countries, errr } = useCountries();
+  const [searchTerm, setsearchTerm] = useState("");
   const [forErr, setFf] = useState("Loading...");
+  console.log(countries);
 
   useEffect(() => {
     const timer = () => {
@@ -50,31 +44,53 @@ function Countries() {
         >
           Home
         </Button>
+        <input
+          type="text"
+          id="mySearch"
+          placeholder="Search.."
+          onChange={(event) => {
+            setsearchTerm(event.target.value);
+          }}
+        />
       </div>
       <body>
-        <table>
+        <table className={clas.styledtable}>
           <tr>
             <th>Flag</th>
             <th>Country</th>
             <th>Population</th>
             <th>Capital</th> <th>Continent</th>
           </tr>
-          {countries.map((data) => {
-            return (
-              <tr>
-                <td>{data.flag}</td>
-                <Link className={classes.onecellstyle} to={data.name.common}>
-                  {data.name.common}
-                </Link>
-                <td>{data.population}</td>
-                <td>{data.capital}</td>
-                <td>{data.continents[0]}</td>
-              </tr>
-            );
-          })}
+          {countries
+            .filter((data) => {
+              if (searchTerm === "") {
+                console.log(data);
+                return countries;
+              } else if (
+                data.name.common
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase())
+              ) {
+                return data;
+              }
+            })
+            .map((data) => {
+              return (
+                <tr>
+                  <td>{data.flag}</td>
+                  {/* "to" concatenates the string given to the path of the url present in the browser then and there here "http://localhost:3000/data.name.common" */}
+                  <Link className={classes.onecellstyle} to={data.name.common}>
+                    {data.name.common}
+                  </Link>
+                  <td>{data.population}</td>
+                  <td>{data.capital}</td>
+                  <td>{data.continents[0]}</td>
+                </tr>
+              );
+            })}
         </table>
       </body>
     </div>
   );
 }
-export default Countries;
+export default Card;

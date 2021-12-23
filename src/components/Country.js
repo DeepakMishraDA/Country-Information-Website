@@ -19,10 +19,11 @@ import useStyles from "./useStylescountry";
 function Countries() {
   const classes = useStyles();
   const param = useParams();
+  console.log("Country", param.countryName);
   const { countries, errr } = useCountry(param.countryName);
   const [ff, setFf] = useState("Loading...");
-  const history = useNavigate();
-  const backHome = () => history("/");
+  const navigate = useNavigate();
+  const backHome = () => navigate("/");
 
   useEffect(() => {
     const timer = () => {
