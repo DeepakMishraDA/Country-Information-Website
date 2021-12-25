@@ -45,6 +45,12 @@ const countReducer = (state = defaultState, action) => {
         ...state,
         countries: countriespayload,
       };
+      case "Deliver_Onecountry":
+      const countrypayload = action.payload;
+      return {
+        ...state,
+        countries: countrypayload,
+      };
 
     case "Error_Data":
       const errpayload = action.payload;

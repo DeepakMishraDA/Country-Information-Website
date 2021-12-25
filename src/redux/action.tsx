@@ -24,9 +24,15 @@ export const getAllcountries = () => {
     }
   };
 };
-export function deliverData(data) {
+export function deliverAllcountries(data) {
   return {
     type: "Deliver_Countries",
+    payload: data,
+  };
+}
+export function deliverAcountry(data) {
+  return {
+    type: "Deliver_Onecountry",
     payload: data,
   };
 }
