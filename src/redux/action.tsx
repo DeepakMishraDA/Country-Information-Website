@@ -44,7 +44,6 @@ export function deliverAllcountries(data: Country[]) {
     payload: data,
   };
 }
-
 export function deliverAcountry(data: Country) {
   return {
     type: "Deliver_Onecountry",
@@ -60,6 +59,7 @@ export const getAcountry = (name: string) => {
       );
       console.log("This", response);
       dispatch(addCountry(response));
+      dispatch(deliverAcountry(response));
     } catch (error) {
       dispatch(fetchError(error));
     }
@@ -72,3 +72,39 @@ export function fetchError(data: any) {
     payload: data,
   };
 }
+
+type FetchError = {
+  type: "Error_Data";
+  payload: any;
+};
+
+type DeliverAllcountries = {
+  type: "Deliver_Countries";
+  payload: Country[];
+};
+
+type AddCountry = {
+  type: "INSERT_COUNTRY";
+  payload: Country;
+};
+
+type DeliverAcountry = {
+  type: "Deliver_Onecountry";
+  payload: Country;
+};
+type Remove = {
+  type: "REMOVE_COUNTRY";
+  payload: string;
+};
+export type AllActions =
+  | FetchError
+  | DeliverAllcountries
+  | Remove
+  | AddCountry
+  | DeliverAcountry;
+// type FetchError = ReturnType<typeof fetchError>;
+// type GetAcountry = ReturnType<typeof getAcountry>;
+// type DeliverAllcountries = ReturnType<typeof deliverAllcountries>;
+// type GetAllcountries = ReturnType<typeof getAllcountries>;
+// type Remove = ReturnType<typeof remove>;
+// type AddCountry = ReturnType<typeof addCountry>;
