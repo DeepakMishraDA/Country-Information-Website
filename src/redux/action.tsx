@@ -3,12 +3,15 @@ import { Dispatch } from "redux";
 
 import { Country } from "./types";
 
-export function addCountry(country: Country) {
+export const INSERT_COUNTRY = "INSERT_COUNTRY";
+
+export function addCountry(country: Country[]) {
   return {
-    type: "INSERT_COUNTRY",
+    type: INSERT_COUNTRY,
     payload: country,
   };
 }
+
 export function remove(countryName: string) {
   return {
     type: "REMOVE_COUNTRY",
@@ -73,6 +76,24 @@ export function fetchError(data: any) {
   };
 }
 
+export const changetoDark = () => {
+  return {
+    type: "Change_to_Dark",
+  };
+};
+export const changetoLight = () => {
+  return {
+    type: "Change_to_Light",
+  };
+};
+type ChangetoLight = {
+  type: "Change_to_Light";
+};
+
+type ChangetoDark = {
+  type: "Change_to_Dark";
+};
+
 type FetchError = {
   type: "Error_Data";
   payload: any;
@@ -84,24 +105,28 @@ type DeliverAllcountries = {
 };
 
 type AddCountry = {
-  type: "INSERT_COUNTRY";
+  type: typeof INSERT_COUNTRY;
   payload: Country;
 };
 
 type DeliverAcountry = {
   type: "Deliver_Onecountry";
-  payload: Country;
+  payload: Country[];
 };
+
 type Remove = {
   type: "REMOVE_COUNTRY";
   payload: string;
 };
+
 export type AllActions =
   | FetchError
   | DeliverAllcountries
   | Remove
   | AddCountry
-  | DeliverAcountry;
+  | DeliverAcountry
+  | ChangetoLight
+  | ChangetoDark;
 // type FetchError = ReturnType<typeof fetchError>;
 // type GetAcountry = ReturnType<typeof getAcountry>;
 // type DeliverAllcountries = ReturnType<typeof deliverAllcountries>;

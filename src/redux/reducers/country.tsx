@@ -1,14 +1,24 @@
-import { AllActions } from "../action";
+import { AllActions, INSERT_COUNTRY } from "../action";
+import { Country } from "../types";
 
-const defaultState = {
+type DefaultState = {
+  cart: Country[];
+  countries: Country[];
+  err: true;
+};
+
+const defaultState: DefaultState = {
   cart: [],
   countries: [],
   err: true,
 };
 
-const countReducer = (state = defaultState, action: AllActions) => {
+const countReducer = (
+  state = defaultState,
+  action: AllActions
+): DefaultState => {
   switch (action.type) {
-    case "INSERT_COUNTRY":
+    case INSERT_COUNTRY:
       const incomingCountry = action.payload; //country object
       const incomingName = incomingCountry.name;
       //existCountry wud be either an array or undefined
@@ -26,7 +36,7 @@ const countReducer = (state = defaultState, action: AllActions) => {
       //console.log(state);
       return {
         ...state,
-        cart: [...state.cart, action.payload.data[0]],
+        cart: [...state.cart, action.payload],
       };
 
     case "REMOVE_COUNTRY":
@@ -38,7 +48,11 @@ const countReducer = (state = defaultState, action: AllActions) => {
       });
 
       return {
-        ...countryRemove,
+        ...state,
+        cart: [
+          ...countryRemove,
+          { name: "", regions: "", population: 0, languages: [], flag: "" },
+        ],
       };
 
     case "Deliver_Countries":
