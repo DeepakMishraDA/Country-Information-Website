@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function useCountry(name) {
+function useCountry(name: string) {
   const [countries, setCountry] = useState([]);
   const [errr, setErr] = useState();
 
