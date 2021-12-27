@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Country } from "../redux/types";
-import { error } from "console";
 
 function useCountry(name: string) {
   const [countries, setCountry] = useState<Country[]>([]);
-  const [errr, setErr] = useState(error);
+  //const [errr, setErr] = useState<any>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,13 +16,13 @@ function useCountry(name: string) {
         //const data = JSON.parse(responses);
         setCountry(responses.data);
       } catch (error: any) {
-        setErr(error);
+        //setErr(error);
       }
     };
     fetchData();
   }, [name]);
   //console.log(countries);
-  return [countries, errr];
+  return countries;
 }
 
 export default useCountry;

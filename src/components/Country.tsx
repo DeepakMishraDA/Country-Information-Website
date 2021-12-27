@@ -28,11 +28,11 @@ function Countries() {
   const classes = useStyles();
   const { countryName } = useParams<useParam>();
   console.log("Country", countryName);
-  const [countries, errr] = useCountry(countryName);
+  const countries = useCountry(countryName);
   const [ff, setFf] = useState("Loading...");
   const navigate = useNavigate();
   const backHome = () => navigate("/");
-
+  const errr = false;
   useEffect(() => {
     const timer = () => {
       setTimeout(() => {
