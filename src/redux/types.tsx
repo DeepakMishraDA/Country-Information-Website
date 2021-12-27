@@ -1,11 +1,17 @@
 export type Country = {
-  name: string;
+  name: Common;
   flag: string;
-  regions: string;
+  continents: Continents[];
   population: number;
-  languages: Language[];
+  capital: string;
 };
-export type Language = {
-  name: string;
-  nativeName: string;
+// export type Language = {
+//   name: string;
+//   nativeName: string;
+// };
+type Common = {
+  common: string;
+};
+type Continents = {
+  continents: string;
 };

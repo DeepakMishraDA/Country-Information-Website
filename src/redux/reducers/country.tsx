@@ -41,7 +41,7 @@ const countReducer = (
 
     case "REMOVE_COUNTRY":
       const countryRemove = state.cart.filter((country) => {
-        if (action.payload === country.name) {
+        if (action.payload === country.name.common) {
           return false;
         }
         return true;
@@ -51,7 +51,13 @@ const countReducer = (
         ...state,
         cart: [
           ...countryRemove,
-          { name: "", regions: "", population: 0, languages: [], flag: "" },
+          {
+            name: { common: "" },
+            continents: [],
+            population: 0,
+            capital: "",
+            flag: "",
+          },
         ],
       };
 

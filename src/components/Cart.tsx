@@ -16,9 +16,9 @@ function Cart() {
   return (
     <div>
       {count.map((data) => {
-        return <h1>{data.name.official}</h1>;
+        return <h1>{data.name}</h1>;
       })}
-      <button onclick={() => getAcountry("finland")}>Add</button>
+      <button onClick={() => getAcountry("finland")}>Add</button>
     </div>
   );
 }
