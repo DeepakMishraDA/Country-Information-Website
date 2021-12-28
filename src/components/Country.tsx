@@ -1,16 +1,11 @@
 import React from "react";
-import TableContainer from "@material-ui/core/TableContainer";
-import Button from "@material-ui/core/Button";
-import TableRow from "@material-ui/core/TableRow";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Table from "@material-ui/core/Table";
-import TableCell from "@material-ui/core/TableCell";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+//import Button from "@material-ui/core/Button";
 
 import useCountry from "../customhooks/useCountry";
-import useStyles from "./useStylescountry";
+//import useStyles from "./useStylescountry";
+import "../App.css";
 
 declare module "react-router-dom" {
   export function useParams<
@@ -25,7 +20,8 @@ type useParam = {
 };
 
 function Countries() {
-  const classes = useStyles();
+  //const classes = useStyles();
+  //const clas = newStyle();
   const { countryName } = useParams<useParam>();
   console.log("Country", countryName);
   const countries = useCountry(countryName);
@@ -47,67 +43,40 @@ function Countries() {
   } else if (countries) {
     return (
       <div>
-        <AppBar variant="outlined">
-          <Toolbar>
-            {/* <Link to="/"> */}
-            <Button
-              className={classes.buttonstyle}
-              variant="contained"
-              color="primary"
-              size="large"
-              onClick={backHome}
-            >
-              Home
-            </Button>
-            {/* </Link> */}
-          </Toolbar>
-        </AppBar>
-        <TableContainer className={classes.tableContainerStyle}>
-          <div>
-            <Table>
-              <TableRow className={classes.tableStyle}>
-                <TableCell className={classes.tablerow1Style}>Flag</TableCell>
-                <TableCell className={classes.tablerow1Style}>
-                  Country
-                </TableCell>
-                <TableCell className={classes.tablerow1Style}>
-                  Population
-                </TableCell>
-                <TableCell className={classes.tablerow1Style}>
-                  Capital
-                </TableCell>
-                <TableCell className={classes.tablerow1Style}>
-                  Continent
-                </TableCell>
-              </TableRow>
-            </Table>
-          </div>
-          <div>
-            <Table>
-              {countries.map((data) => {
-                return (
-                  <TableRow className={classes.tableStyle}>
-                    <TableCell className={classes.flagstyle}>
-                      {data.flag}
-                    </TableCell>
-                    <TableCell className={classes.tablerowStyle}>
-                      {data.name.common}
-                    </TableCell>
-                    <TableCell className={classes.tablerowStyle}>
-                      {data.population}
-                    </TableCell>
-                    <TableCell className={classes.tablerowStyle}>
-                      {data.capital}
-                    </TableCell>
-                    <TableCell className={classes.tablerowStyle}>
-                      {data.continents[0]}
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </Table>
-          </div>
-        </TableContainer>
+        <div
+          style={{
+            backgroundColor: "#009879",
+            height: "60px",
+            display: "block",
+          }}
+        >
+          {/* <Link to="/"> */}
+          <button onClick={backHome}>Home</button>
+          {/* </Link> */}
+        </div>
+        <body>
+          <table className="content-table">
+            <tr>
+              <th>Flag</th>
+              <th>Country</th>
+              <th>Population</th>
+              <th>Capital</th> <th>Continent</th>
+              <th>Buy</th>
+            </tr>
+            {countries.map((data) => {
+              return (
+                <tr>
+                  <td>{data.flag}</td>
+                  <td>{data.name.common}</td>
+                  <td>{data.population}</td>
+                  <td>{data.capital}</td>
+                  <td>{data.continents[0]}</td>
+                  <td>Add to Cart</td>
+                </tr>
+              );
+            })}
+          </table>
+        </body>
       </div>
     );
   }

@@ -1,15 +1,14 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import useCountries from "../customhooks/useCountries";
 import useStyles from "./useStylecountries";
-import newStyle from "./newStyle";
+import "../App.css";
 
 function Countries() {
   const classes = useStyles();
-  const clas = newStyle();
+  //const clas = newStyle();
   const { countries, errr } = useCountries();
   const [searchTerm, setsearchTerm] = useState("");
   const [forErr, setFf] = useState("Loading...");
@@ -31,19 +30,14 @@ function Countries() {
     <div>
       <div
         style={{
-          backgroundColor: "blue",
+          backgroundColor: "#009879",
           height: "60px",
-          display: "block",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
-        <Button
-          className={classes.buttonstyle}
-          variant="contained"
-          color="primary"
-          size="large"
-        >
-          Home
-        </Button>
+        <button>Home</button>
         <input
           type="text"
           id="mySearch"
@@ -54,40 +48,55 @@ function Countries() {
         />
       </div>
       <body>
-        <table className={clas.styledtable}>
-          <tr>
-            <th>Flag</th>
-            <th>Country</th>
-            <th>Population</th>
-            <th>Capital</th> <th>Continent</th>
-          </tr>
-          {countries
-            .filter((data) => {
-              if (searchTerm === "") {
-                console.log(data);
-                return countries;
-              } else if (
-                data.name.common
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase())
-              ) {
-                return data;
-              }
-            })
-            .map((data) => {
-              return (
-                <tr>
-                  <td>{data.flag}</td>
-                  {/* "to" concatenates the string given to the path of the url present in the browser then and there here "http://localhost:3000/data.name.common" */}
-                  <Link className={classes.onecellstyle} to={data.name.common}>
-                    {data.name.common}
-                  </Link>
-                  <td>{data.population}</td>
-                  <td>{data.capital}</td>
-                  <td>{data.continents[0]}</td>
-                </tr>
-              );
-            })}
+        <table className="content-table">
+          <thead>
+            <tr>
+              <th>Flag</th>
+              <th>Country</th>
+              <th>Population</th>
+              <th>Capital</th>
+              <th>Continent</th>
+              <th>Cart</th>
+            </tr>
+          </thead>
+          <tbody>
+            {countries
+              .filter((data) => {
+                if (searchTerm === "") {
+                  console.log(data);
+                  return countries;
+                } else if (
+                  data.name.common
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return data;
+                }
+              })
+              .map((data) => {
+                return (
+                  <tr>
+                    <td>{data.flag}</td>
+                    {/* "to" concatenates the string given to the path of the url present in the browser then and there here "http://localhost:3000/data.name.common" */}
+                    <td>
+                      <Link
+                        className={classes.onecellstyle}
+                        to={data.name.common}
+                      >
+                        {data.name.common}
+                      </Link>
+                    </td>
+                    <td>{data.population}</td>
+                    <td>{data.capital}</td>
+                    <td>{data.continents[0]}</td>
+                    <td>
+                      <button>+</button>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                      <button>-</button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
         </table>
       </body>
     </div>

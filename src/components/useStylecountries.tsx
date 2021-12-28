@@ -34,12 +34,7 @@ const useStylecountries = makeStyles({
     backgroundColor: "skyblue",
   },
   onecellstyle: {
-    fontSize: "20px",
-    fontFamily: "Times New Roman, Times, serif",
-    textAlign: "center",
-    border: "outset pink 2px",
-    borderRightStyle: "solid",
-    backgroundColor: "skyblue",
+    fontSize: "1em",
     textDecoration: "none",
   },
   cellstyle: {
