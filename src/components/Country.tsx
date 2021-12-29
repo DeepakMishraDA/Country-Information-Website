@@ -1,10 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-//import Button from "@material-ui/core/Button";
 
 import useCountry from "../customhooks/useCountry";
-//import useStyles from "./useStylescountry";
 import "../App.css";
 
 declare module "react-router-dom" {
@@ -20,8 +18,6 @@ type useParam = {
 };
 
 function Countries() {
-  //const classes = useStyles();
-  //const clas = newStyle();
   const { countryName } = useParams<useParam>();
   console.log("Country", countryName);
   const countries = useCountry(countryName);
@@ -67,11 +63,22 @@ function Countries() {
               return (
                 <tr>
                   <td>{data.flag}</td>
-                  <td>{data.name.common}</td>
+                  <td
+                    style={{
+                      fontSize: "1em",
+                      textDecoration: "none",
+                      color: "#009879",
+                    }}
+                  >
+                    {data.name.common}
+                  </td>
                   <td>{data.population}</td>
                   <td>{data.capital}</td>
                   <td>{data.continents[0]}</td>
-                  <td>Add to Cart</td>
+                  <td>
+                    <button>+</button>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button>-</button>
+                  </td>
                 </tr>
               );
             })}

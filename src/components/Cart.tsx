@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAcountry } from "../redux/action";
 import { Store } from "../redux/reducers";
+import "../App.css";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function Cart() {
 
   return (
     <div>
+      <div className="card"></div>
       {count.map((data) => {
         return <h1>{data.name}</h1>;
       })}
