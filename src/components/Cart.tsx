@@ -1,24 +1,50 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAcountry } from "../redux/action";
+import { deliverAcountry, getAcountry } from "../redux/action";
+import { useParams, useNavigate } from "react-router-dom";
+
 import { Store } from "../redux/reducers";
 import "../App.css";
+import { Countr } from "../redux/types";
+
+declare module "react-router-dom" {
+  export function useParams<
+    P extends Record<string, string | undefined> = {
+      [key: string]: string;
+    }
+  >(): P;
+}
+
+type useParam = {
+  countryName: string;
+};
 
 function Cart() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const backHome = () => navigate("/");
+  const { countryName } = useParams<useParam>();
   const count = useSelector((state: Store) => {
     return state.countReducer.cart;
   });
-
+  console.log(count);
   useEffect(() => {
-    dispatch(getAcountry("germany"));
-  }, [dispatch]);
+    dispatch(getAcountry(countryName));
+  }, [dispatch, countryName]);
 
   return (
     <div>
-      <div className="card"></div>
-      {count.map((data) => {
-        return <h1>{data.name}</h1>;
+      <button onClick={backHome}>Home</button>
+      {count.map((data: Countr) => {
+        return (
+          <div>
+            <h1>{data.data[0].population}</h1>
+            <h1>{data.data[0].name.common}</h1>
+            <h1>{data.data[0].flag}</h1>
+            <h1>{data.data[0].continents}</h1>
+            <h1>{data.data[0].capital}</h1>
+          </div>
+        );
       })}
       <button onClick={() => getAcountry("finland")}>Add</button>
     </div>

@@ -1,11 +1,11 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 
-import { Country } from "./types";
+import { Country, Countr } from "./types";
 
 export const INSERT_COUNTRY = "INSERT_COUNTRY";
 
-export function addCountry(country: Country[]) {
+export function addCountry(country: Countr) {
   return {
     type: INSERT_COUNTRY,
     payload: country,
@@ -32,8 +32,9 @@ export const getAllcountries = () => {
   return async (dispatch: Dispatch, getState: any) => {
     try {
       const responses = await axios.get("https://restcountries.com/v3.1/all");
-      //console.log("And This", responses.data);
+      console.log("And This", responses.data);
       dispatch(deliverAllcountries(responses.data));
+      //dispatch(addCountry(responses.data));
     } catch (error) {
       console.log("error", error);
       dispatch(fetchError(error));
@@ -57,12 +58,12 @@ export function deliverAcountry(data: Country) {
 export const getAcountry = (name: string) => {
   return async (dispatch: Dispatch, getState: any) => {
     try {
-      const response: Country = await axios.get(
+      const response: Countr = await axios.get(
         `https://restcountries.com/v3.1/name/${name}`
       );
       console.log("This", response);
-      //dispatch(addCountry(response));
-      dispatch(deliverAcountry(response));
+      dispatch(addCountry(response));
+      //dispatch(deliverAcountry(response));
     } catch (error) {
       dispatch(fetchError(error));
     }
@@ -86,6 +87,7 @@ export const changetoLight = () => {
     type: "Change_to_Light",
   };
 };
+
 type ChangetoLight = {
   type: "Change_to_Light";
 };
@@ -106,12 +108,12 @@ type DeliverAllcountries = {
 
 type AddCountry = {
   type: typeof INSERT_COUNTRY;
-  payload: Country;
+  payload: Countr;
 };
 
 type DeliverAcountry = {
   type: "Deliver_Onecountry";
-  payload: Country[];
+  payload: Country;
 };
 
 type Remove = {

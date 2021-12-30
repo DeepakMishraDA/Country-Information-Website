@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Countries />} />
         <Route path=":countryName" element={<Country />} />
-        <Route path="cart" element={<Cart />} />
+        <Route path="cart/:countryName" element={<Cart />} />
       </Routes>
     </div>
   );

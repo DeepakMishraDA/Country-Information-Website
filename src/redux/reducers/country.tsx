@@ -1,8 +1,8 @@
 import { AllActions, INSERT_COUNTRY } from "../action";
-import { Country } from "../types";
+import { Country, Countr } from "../types";
 
 type DefaultState = {
-  cart: Country[];
+  cart: Countr[];
   countries: Country[];
   err: true;
 };
@@ -20,10 +20,10 @@ const countReducer = (
   switch (action.type) {
     case INSERT_COUNTRY:
       const incomingCountry = action.payload; //country object
-      const incomingName = incomingCountry.name;
+      const incomingName = incomingCountry.data[0].name.common;
       //existCountry wud be either an array or undefined
       const existCountry = state.cart.find((country) => {
-        if (incomingName === country.name) {
+        if (incomingName === country.data[0].name.common) {
           //country is element of state.cart array
           return true;
         }
@@ -39,27 +39,27 @@ const countReducer = (
         cart: [...state.cart, action.payload],
       };
 
-    case "REMOVE_COUNTRY":
-      const countryRemove = state.cart.filter((country) => {
-        if (action.payload === country.name.common) {
-          return false;
-        }
-        return true;
-      });
+    // case "REMOVE_COUNTRY":
+    //   const countryRemove = state.cart.filter((country) => {
+    //     if (action.payload === country.name.common) {
+    //       return false;
+    //     }
+    //     return true;
+    //   });
 
-      return {
-        ...state,
-        cart: [
-          ...countryRemove,
-          {
-            name: { common: "" },
-            continents: [],
-            population: 0,
-            capital: "",
-            flag: "",
-          },
-        ],
-      };
+    //   return {
+    //     ...state,
+    //     cart: [
+    //       ...countryRemove,
+    //       {
+    //         name: { common: "" },
+    //         continents: [],
+    //         population: 0,
+    //         capital: "",
+    //         flag: "",
+    //       },
+    //     ],
+    //   };
 
     case "Deliver_Countries":
       const countriespayload = action.payload;
@@ -67,12 +67,12 @@ const countReducer = (
         ...state,
         countries: countriespayload,
       };
-    case "Deliver_Onecountry":
-      const countrypayload = action.payload;
-      return {
-        ...state,
-        countries: countrypayload,
-      };
+    // case "Deliver_Onecountry":
+    //   const countrypayload = action.payload;
+    //   return {
+    //     ...state,
+    //     cart: [...state.cart, countrypayload],
+    //   };
 
     case "Error_Data":
       const errpayload = action.payload;
