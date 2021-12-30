@@ -67,12 +67,26 @@ const countReducer = (
         ...state,
         countries: countriespayload,
       };
-    // case "Deliver_Onecountry":
-    //   const countrypayload = action.payload;
-    //   return {
-    //     ...state,
-    //     cart: [...state.cart, countrypayload],
-    //   };
+    case "Deliver_Onecountry":
+      const addCountry = action.payload; //country object
+      const addName = addCountry.data[0].name.common;
+      //existCountry wud be either an array or undefined
+      const addedCountry = state.cart.find((country) => {
+        if (addName === country.data[0].name.common) {
+          //country is element of state.cart array
+          return true;
+        }
+
+        return false;
+      });
+      if (addedCountry) {
+        return state;
+      }
+      //console.log(state);
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
 
     case "Error_Data":
       const errpayload = action.payload;

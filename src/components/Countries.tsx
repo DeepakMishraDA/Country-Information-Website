@@ -1,13 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import useCountries from "../customhooks/useCountries";
 import useStyles from "./useStylecountries";
 import "../App.css";
+import { getAcountry } from "../redux/action";
 
 function Countries() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   //const clas = newStyle();
   const { countries, errr } = useCountries();
   const [searchTerm, setsearchTerm] = useState("");
@@ -22,6 +25,9 @@ function Countries() {
     };
     timer();
   }, []);
+  const addTocart = (gg: string) => {
+    dispatch(getAcountry(gg));
+  };
 
   if (errr !== true) {
     return <h1 className="id">{forErr}</h1>;
@@ -76,7 +82,9 @@ function Countries() {
               .map((data) => {
                 return (
                   <tr>
-                    <td>{data.flag}</td>
+                    <td>
+                      <h1>{data.flag}</h1>
+                    </td>
                     {/* "to" concatenates the string given to the path of the url present in the browser then and there here "http://localhost:3000/data.name.common" */}
                     <td>
                       <Link
@@ -90,7 +98,10 @@ function Countries() {
                     <td>{data.capital}</td>
                     <td>{data.continents[0]}</td>
                     <td>
-                      <button>+</button>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                      <button onClick={() => addTocart(data.name.common)}>
+                        +
+                      </button>
+                      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                       <button>-</button>
                     </td>
                   </tr>

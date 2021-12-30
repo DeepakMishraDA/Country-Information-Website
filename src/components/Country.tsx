@@ -62,7 +62,9 @@ function Countries() {
             {countries.map((data) => {
               return (
                 <tr>
-                  <td>{data.flag}</td>
+                  <td>
+                    <h1>{data.flag}</h1>
+                  </td>
                   <td
                     style={{
                       fontSize: "1em",

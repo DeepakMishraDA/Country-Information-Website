@@ -48,7 +48,7 @@ export function deliverAllcountries(data: Country[]) {
     payload: data,
   };
 }
-export function deliverAcountry(data: Country) {
+export function deliverAcountry(data: Countr) {
   return {
     type: "Deliver_Onecountry",
     payload: data,
@@ -113,7 +113,7 @@ type AddCountry = {
 
 type DeliverAcountry = {
   type: "Deliver_Onecountry";
-  payload: Country;
+  payload: Countr;
 };
 
 type Remove = {
