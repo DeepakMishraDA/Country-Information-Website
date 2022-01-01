@@ -1,12 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import useCountries from "../customhooks/useCountries";
 import useStyles from "./useStylecountries";
 import "../App.css";
-import { getAcountry } from "../redux/action";
+import { getAcountry, remove } from "../redux/action";
+import { Store } from "../redux/reducers";
 
 function Countries() {
   const classes = useStyles();
@@ -15,7 +16,11 @@ function Countries() {
   const { countries, errr } = useCountries();
   const [searchTerm, setsearchTerm] = useState("");
   const [forErr, setFf] = useState("Loading...");
-  console.log(countries);
+  //console.log(countries);
+  const count = useSelector((state: Store) => {
+    return state.countReducer.cart;
+  });
+  //console.log("CART", count);
 
   useEffect(() => {
     const timer = () => {
@@ -27,6 +32,9 @@ function Countries() {
   }, []);
   const addTocart = (gg: string) => {
     dispatch(getAcountry(gg));
+  };
+  const removeFromcart = (gg: string) => {
+    dispatch(remove(gg));
   };
 
   if (errr !== true) {
@@ -69,7 +77,7 @@ function Countries() {
             {countries
               .filter((data) => {
                 if (searchTerm === "") {
-                  console.log(data);
+                  //console.log(data);
                   return countries;
                 } else if (
                   data.name.common
@@ -102,13 +110,27 @@ function Countries() {
                         +
                       </button>
                       &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                      <button>-</button>
+                      <button onClick={() => removeFromcart(data.name.common)}>
+                        -
+                      </button>
                     </td>
                   </tr>
                 );
               })}
           </tbody>
         </table>
+        {count.map((data) => {
+          return (
+            <div>
+              <h1>{data.data[0].population}</h1>
+              <button>ADD</button>
+              {/* <h1>{data.data[0].name.common}</h1>
+            <h1>{data.data[0].flag}</h1>
+            <h1>{data.data[0].continents}</h1>
+            <h1>{data.data[0].capital}</h1> */}
+            </div>
+          );
+        })}
       </body>
     </div>
   );

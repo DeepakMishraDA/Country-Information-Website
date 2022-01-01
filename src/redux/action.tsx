@@ -32,7 +32,7 @@ export const getAllcountries = () => {
   return async (dispatch: Dispatch, getState: any) => {
     try {
       const responses = await axios.get("https://restcountries.com/v3.1/all");
-      console.log("And This", responses.data);
+      //console.log("And This", responses.data);
       dispatch(deliverAllcountries(responses.data));
       //dispatch(addCountry(responses.data));
     } catch (error) {
@@ -61,7 +61,7 @@ export const getAcountry = (name: string) => {
       const response: Countr = await axios.get(
         `https://restcountries.com/v3.1/name/${name}`
       );
-      console.log("This", response);
+      //console.log("This", response);
       dispatch(addCountry(response));
       //dispatch(deliverAcountry(response));
     } catch (error) {

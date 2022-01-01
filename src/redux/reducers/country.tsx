@@ -39,27 +39,31 @@ const countReducer = (
         cart: [...state.cart, action.payload],
       };
 
-    // case "REMOVE_COUNTRY":
-    //   const countryRemove = state.cart.filter((country) => {
-    //     if (action.payload === country.name.common) {
-    //       return false;
-    //     }
-    //     return true;
-    //   });
+    case "REMOVE_COUNTRY":
+      const countryRemove = state.cart.filter((country) => {
+        if (action.payload === country.data[0].name.common) {
+          return false;
+        }
+        return true;
+      });
 
-    //   return {
-    //     ...state,
-    //     cart: [
-    //       ...countryRemove,
-    //       {
-    //         name: { common: "" },
-    //         continents: [],
-    //         population: 0,
-    //         capital: "",
-    //         flag: "",
-    //       },
-    //     ],
-    //   };
+      return {
+        ...state,
+        cart: [
+          ...countryRemove,
+          // {
+          //   data: [
+          //     {
+          //       name: { common: "" },
+          //       continents: [],
+          //       population: 0,
+          //       capital: "",
+          //       flag: "",
+          //     },
+          //   ],
+          // },
+        ],
+      };
 
     case "Deliver_Countries":
       const countriespayload = action.payload;

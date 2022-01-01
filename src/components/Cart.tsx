@@ -1,6 +1,6 @@
 //import React, { useEffect } from "react";
 import { useSelector } from "react-redux"; //useDispatch
-import { getAcountry } from "../redux/action";
+
 import { useNavigate } from "react-router-dom"; //useParams
 
 import { Store } from "../redux/reducers";
@@ -47,7 +47,6 @@ function Cart() {
           </div>
         );
       })}
-      <button onClick={() => getAcountry("finland")}>Add</button>
     </div>
   );
 }
