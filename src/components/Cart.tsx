@@ -34,19 +34,9 @@ function Cart() {
 
   return (
     <div>
-      <button onClick={backHome}>Home</button>
-      {count.map((data: Countr) => {
-        return (
-          <div>
-            <h1>{data.data[0].population}</h1>
-            <button>ADD</button>
-            <h1>{data.data[0].name.common}</h1>
-            <h1>{data.data[0].flag}</h1>
-            <h1>{data.data[0].continents}</h1>
-            <h1>{data.data[0].capital}</h1>
-          </div>
-        );
-      })}
+      <body className="body">
+        <div className="Cart-Container"></div>
+      </body>
     </div>
   );
 }
