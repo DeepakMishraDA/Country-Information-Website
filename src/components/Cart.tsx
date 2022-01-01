@@ -35,7 +35,12 @@ function Cart() {
   return (
     <div>
       <body className="body">
-        <div className="Cart-Container"></div>
+        <div className="Cart-Container">
+          <div className="Header">
+            <h3 className="Heading">Shopping Cart</h3>
+            <h5 className="Action">Remove all</h5>
+          </div>
+        </div>
       </body>
     </div>
   );
