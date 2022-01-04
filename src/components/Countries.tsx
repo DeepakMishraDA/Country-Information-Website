@@ -78,14 +78,11 @@ function Countries() {
               .filter((data) => {
                 if (searchTerm === "") {
                   //console.log(data);
-                  return countries;
-                } else if (
-                  data.name.common
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase())
-                ) {
-                  return data;
-                }
+                  return true;
+                } //always return a boolean when using filter and includes
+                return data.name.common
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase());
               })
               .map((data) => {
                 return (

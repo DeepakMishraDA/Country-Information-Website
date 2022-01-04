@@ -7,7 +7,8 @@ const initialStateFunc = () => {
   let parsedData;
 
   const data = localStorage.getItem("cart");
-  parsedData = data && JSON.parse(data);
+  //parsedData = data;
+  parsedData = JSON.parse(data as string); //at place of 1 u can put data also, we need to make parsed data true
 
   if (parsedData) {
     return parsedData;
